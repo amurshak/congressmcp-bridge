@@ -93,7 +93,7 @@ class SessionManager {
           console.error(`DEBUG: Response status: ${res.statusCode}`);
           console.error(`DEBUG: Response length: ${responseData.length} chars`);
           
-          if (res.statusCode !== 200) {
+          if (res.statusCode !== 200 && res.statusCode !== 202) {
             reject(new Error(`HTTP ${res.statusCode}: ${responseData}`));
             return;
           }
@@ -122,9 +122,12 @@ class SessionManager {
             if (jsonData) {
               resolve(jsonData);
             } else {
-              // For notifications, empty response might be OK
+              // For notifications, empty response is OK (HTTP 202)
               if (message.method && message.method.startsWith('notifications/')) {
-                console.error(`DEBUG: Empty response for notification (expected)`);
+                console.error(`DEBUG: Empty response for notification (HTTP ${res.statusCode} - expected)`);
+                resolve(null);
+              } else if (res.statusCode === 202) {
+                console.error(`DEBUG: HTTP 202 response - operation accepted`);
                 resolve(null);
               } else {
                 console.error(`DEBUG: No JSON found in SSE response`);
@@ -133,12 +136,25 @@ class SessionManager {
               }
             }
           } else {
-            // Regular JSON
-            try {
-              const jsonResponse = JSON.parse(responseData);
-              resolve(jsonResponse);
-            } catch (e) {
-              reject(new Error(`Invalid JSON: ${responseData}`));
+            // Regular JSON response
+            if (responseData.trim() === '') {
+              // Empty response - check if this is expected
+              if (message.method && message.method.startsWith('notifications/')) {
+                console.error(`DEBUG: Empty response for notification (expected)`);
+                resolve(null);
+              } else if (res.statusCode === 202) {
+                console.error(`DEBUG: HTTP 202 with empty body (accepted)`);
+                resolve(null);
+              } else {
+                reject(new Error(`Unexpected empty response`));
+              }
+            } else {
+              try {
+                const jsonResponse = JSON.parse(responseData);
+                resolve(jsonResponse);
+              } catch (e) {
+                reject(new Error(`Invalid JSON: ${responseData}`));
+              }
             }
           }
         });
@@ -206,14 +222,23 @@ class SessionManager {
 // Create global session manager
 const sessionManager = new SessionManager();
 
+// Process multiple stdin inputs without reinitializing
+let inputBuffer = '';
+
 // Main stdio handler
 async function main() {
   console.error(`DEBUG: Congressional MCP Bridge with persistent sessions starting`);
   
   process.stdin.on('data', async (data) => {
-    const lines = data.toString().split('\n').filter(line => line.trim());
+    inputBuffer += data.toString();
+    
+    // Process complete lines
+    let lines = inputBuffer.split('\n');
+    inputBuffer = lines.pop() || ''; // Keep incomplete line in buffer
     
     for (const line of lines) {
+      if (!line.trim()) continue;
+      
       try {
         const message = JSON.parse(line.trim());
         console.error(`DEBUG: Processing: ${message.method || 'notification'} (ID: ${message.id})`);
