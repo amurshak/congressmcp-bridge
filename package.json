@@ -1,0 +1,21 @@
+{
+  "name": "congressional-mcp",
+  "version": "1.0.0",
+  "description": "Connect Claude Desktop to Congressional MCP server",
+  "main": "index.js",
+  "bin": {
+    "congressional-mcp": "./index.js"
+  },
+  "scripts": {
+    "install-config": "node bin/install.js"
+  },
+  "author": "Alex Murshak <alex@lawgiver.ai>",
+  "license": "MIT",
+  "homepage": "https://congressmcp.lawgiver.ai",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  }
+}
