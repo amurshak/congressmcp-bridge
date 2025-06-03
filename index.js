@@ -10,7 +10,7 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 
-const SERVER_BASE = 'https://congressmcp.lawgiver.ai';
+const SERVER_BASE = 'https://api.congressmcp.lawgiver.ai';
 let sessionId = null;
 let isInitialized = false;
 
