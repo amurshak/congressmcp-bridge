@@ -45,7 +45,9 @@
   "preferGlobal": true,
   "files": [
     "index.js",
+    "LICENSE",
     "README.md",
-    "package.json"
+    "package.json",
+    "CHANGELOG.md"
   ]
 }

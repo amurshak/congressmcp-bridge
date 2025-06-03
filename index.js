@@ -18,9 +18,23 @@ let isInitialized = false;
 const API_KEY = process.env.CONGRESSMCP_API_KEY;
 
 if (!API_KEY) {
-  console.error('ERROR: CONGRESSMCP_API_KEY environment variable not set');
-  console.error('Please configure your API key in Claude Desktop config.');
-  console.error('Visit https://congressmcp.lawgiver.ai to get your API key.');
+  console.error('🚫 ERROR: CONGRESSMCP_API_KEY environment variable not set\n');
+  console.error('📋 SETUP INSTRUCTIONS:');
+  console.error('1. Get your API key at: https://congressmcp.lawgiver.ai');
+  console.error('2. Add to Claude Desktop config:');
+  console.error('   {');
+  console.error('     "mcpServers": {');
+  console.error('       "congressmcp": {');
+  console.error('         "command": "npx",');
+  console.error('         "args": ["-y", "congressmcp"],');
+  console.error('         "env": {');
+  console.error('           "CONGRESSMCP_API_KEY": "your-api-key-here"');
+  console.error('         }');
+  console.error('       }');
+  console.error('     }');
+  console.error('   }');
+  console.error('3. Restart Claude Desktop\n');
+  console.error('📧 Need help? Email: support@congressmcp.lawgiver.ai');
   process.exit(1);
 }
 
