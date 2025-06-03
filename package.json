@@ -1,7 +1,7 @@
 {
   "name": "congressmcp",
-  "version": "1.1.0",
-  "description": "MCP bridge for Congressional data - access 42+ legislative tools through Claude Desktop and other MCP clients",
+  "version": "1.2.0",
+  "description": "MCP bridge for Congressional data - access 42+ legislative tools through Claude Desktop and other MCP clients. Now with improved domain architecture.",
   "main": "index.js",
   "bin": {
     "congressmcp": "./index.js"
