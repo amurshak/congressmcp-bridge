@@ -49,6 +49,24 @@ Ask Claude about:
 - Members: "Who represents California in the Senate?"  
 - Committees: "What committees handle healthcare?"
 - Amendments: "Show amendments to HR 1234"
+- Roll Call Votes: "How did senators vote on the infrastructure bill?"
+- And much more legislative data!
+
+## Known Limitations
+
+⚠️ **Important Architectural Notice:**
+
+Currently, all users share a single Congress.gov API key on the backend server. This means:
+
+- **Rate Limits**: All users share the same 5,000 requests/hour quota from Congress.gov
+- **Scalability**: May hit rate limits with many concurrent users
+- **Architecture**: Not the ideal long-term solution
+
+**Planned Fix (v2.0):** Future versions will require users to provide their own Congress.gov API key for individual rate limits and better scalability. This will require:
+1. Obtaining a free Congress.gov API key at: https://api.congress.gov/sign-up/
+2. Adding `CONGRESS_GOV_API_KEY` to your Claude config
+
+**Current Status:** This limitation doesn't affect functionality for early users, but please be aware that heavy usage may experience rate limiting.
 
 ## Subscription Tiers
 
