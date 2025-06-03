@@ -5,7 +5,7 @@ Connect Claude Desktop to US Congressional data - bills, amendments, members, co
 ## Installation
 
 ```bash
-npm install -g congressional-mcp
+npm install -g congressmcp
 ```
 
 ## Setup
@@ -26,14 +26,14 @@ Add this to your Claude Desktop config with your API key:
 ```json
 {
   "mcpServers": {
-    "congressional-mcp": {
+    "congressmcp": {
       "command": "npx",
       "args": [
         "-y", 
-        "congressional-mcp"
+        "congressmcp"
       ],
       "env": {
-        "CONGRESSIONAL_MCP_API_KEY": "your-api-key-here"
+        "CONGRESSMCP_API_KEY": "your-api-key-here"
       }
     }
   }

@@ -15,10 +15,10 @@ let sessionId = null;
 let isInitialized = false;
 
 // Get API key from environment variable (set by Claude Desktop)
-const API_KEY = process.env.CONGRESSIONAL_MCP_API_KEY;
+const API_KEY = process.env.CONGRESSMCP_API_KEY;
 
 if (!API_KEY) {
-  console.error('ERROR: CONGRESSIONAL_MCP_API_KEY environment variable not set');
+  console.error('ERROR: CONGRESSMCP_API_KEY environment variable not set');
   console.error('Please configure your API key in Claude Desktop config.');
   console.error('Visit https://congressmcp.lawgiver.ai to get your API key.');
   process.exit(1);
@@ -50,7 +50,7 @@ class SessionManager {
           sampling: {}
         },
         clientInfo: {
-          name: "congressional-mcp-bridge",
+          name: "congressmcp-bridge",
           version: "1.1.0"
         }
       }
@@ -81,7 +81,7 @@ class SessionManager {
         'Content-Type': 'application/json',
         'Accept': 'application/json, text/event-stream',
         'Content-Length': Buffer.byteLength(data),
-        'User-Agent': 'congressional-mcp-bridge/1.1.0',
+        'User-Agent': 'congressmcp-bridge/1.1.0',
         'Authorization': `Bearer ${API_KEY}`
       };
       

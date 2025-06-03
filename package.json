@@ -1,10 +1,10 @@
 {
-  "name": "congressional-mcp",
+  "name": "congressmcp",
   "version": "1.1.0",
   "description": "MCP bridge for Congressional data - access 42+ legislative tools through Claude Desktop and other MCP clients",
   "main": "index.js",
   "bin": {
-    "congressional-mcp": "./index.js"
+    "congressmcp": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
