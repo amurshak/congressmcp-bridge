@@ -1,15 +1,28 @@
 #!/usr/bin/env node
 
 /**
- * Congressional MCP Bridge - Persistent Session Version
- * Maintains MCP session across multiple requests
+ * Congressional MCP Bridge - Connects Claude Desktop to Congressional MCP Server
+ * Handles authentication and request forwarding
  */
 
 const https = require('https');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
 
 const SERVER_BASE = 'https://congressmcp.lawgiver.ai';
 let sessionId = null;
 let isInitialized = false;
+
+// Get API key from environment variable (set by Claude Desktop)
+const API_KEY = process.env.CONGRESSIONAL_MCP_API_KEY;
+
+if (!API_KEY) {
+  console.error('ERROR: CONGRESSIONAL_MCP_API_KEY environment variable not set');
+  console.error('Please configure your API key in Claude Desktop config.');
+  console.error('Visit https://congressmcp.lawgiver.ai to get your API key.');
+  process.exit(1);
+}
 
 // Simple in-memory session store for the bridge process
 class SessionManager {
@@ -23,7 +36,7 @@ class SessionManager {
       return;
     }
     
-    console.error(`DEBUG: Initializing new MCP session...`);
+    console.error(`DEBUG: Initializing new MCP session with authentication...`);
     
     // Step 1: Send initialize
     const initMessage = {
@@ -38,7 +51,7 @@ class SessionManager {
         },
         clientInfo: {
           name: "congressional-mcp-bridge",
-          version: "1.0.0"
+          version: "1.1.0"
         }
       }
     };
@@ -68,14 +81,15 @@ class SessionManager {
         'Content-Type': 'application/json',
         'Accept': 'application/json, text/event-stream',
         'Content-Length': Buffer.byteLength(data),
-        'User-Agent': 'congressional-mcp-bridge/1.0.0'
+        'User-Agent': 'congressional-mcp-bridge/1.1.0',
+        'Authorization': `Bearer ${API_KEY}`
       };
       
       if (useSession && this.sessionId) {
         headers['MCP-Session-ID'] = this.sessionId;
       }
       
-      console.error(`DEBUG: ${useSession ? 'Authenticated' : 'Initial'} request to /mcp/`);
+      console.error(`DEBUG: Authenticated request to /mcp/`);
       
       const req = https.request(`${SERVER_BASE}/mcp/`, {
         method: 'POST',

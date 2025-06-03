@@ -1,18 +1,43 @@
 {
   "name": "congressional-mcp",
-  "version": "1.0.0",
-  "description": "MCP bridge for Congressional API server",
+  "version": "1.1.0",
+  "description": "MCP bridge for Congressional data - access 42+ legislative tools through Claude Desktop and other MCP clients",
   "main": "index.js",
   "bin": {
     "congressional-mcp": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "keywords": ["mcp", "congress", "api"],
-  "author": "Your Name",
+  "keywords": [
+    "mcp", 
+    "model-context-protocol",
+    "congress", 
+    "congressional", 
+    "legislative", 
+    "bills",
+    "claude-desktop",
+    "api", 
+    "government",
+    "politics",
+    "research",
+    "bridge"
+  ],
+  "author": {
+    "name": "Alex Murshak",
+    "email": "support@congressmcp.lawgiver.ai",
+    "url": "https://congressmcp.lawgiver.ai"
+  },
   "license": "MIT",
+  "homepage": "https://congressmcp.lawgiver.ai",
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "preferGlobal": true,
+  "files": [
+    "index.js",
+    "README.md",
+    "package.json"
+  ]
 }
