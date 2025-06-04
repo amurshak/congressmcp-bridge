@@ -1,4 +1,4 @@
-# Congressional MCP
+# congressmcp
 
 Connect Claude Desktop to US Congressional data - bills, amendments, members, committees, and more.
 
@@ -76,4 +76,4 @@ Currently, all users share a single Congress.gov API key on the backend server. 
 
 ## Support
 
-alex@lawgiver.ai
+support@congressmcp.lawgiver.ai
