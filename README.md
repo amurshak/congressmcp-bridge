@@ -8,16 +8,16 @@ Connect Claude Desktop to US Congressional data - bills, amendments, members, co
 npm install -g congressmcp
 ```
 
-## Setup
+### Setup
 
 1. **Get your API key:**
    - Visit: https://congressmcp.lawgiver.ai
    - Sign up for a free account  
    - Check your email for your API key
 
-2. **Configure Claude Desktop:**
+2. **Configure local MCP client:**
 
-Add this to your Claude Desktop config with your API key:
+Add this to your config or cline_mcp_settings.json with your API key:
 
 **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
 **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`  
@@ -70,8 +70,8 @@ Currently, all users share a single Congress.gov API key on the backend server. 
 
 ## Subscription Tiers
 
-- **FREE**: 16 functions, basic legislative tools
-- **PRO**: $19/month, 113+ functions, full access
+- **FREE**: All functions with 200 calls/month
+- **PRO**: $19/month, all functions with 5,000 calls/month
 - **ENTERPRISE**: Custom pricing, unlimited usage
 
 ## Support
