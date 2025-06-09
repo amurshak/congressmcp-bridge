@@ -70,8 +70,8 @@ Currently, all users share a single Congress.gov API key on the backend server. 
 
 ## Subscription Tiers
 
-- **FREE**: 200 API calls/month, basic tools
-- **PRO**: $29/month, 5,000 calls, all tools
+- **FREE**: 16 functions, basic legislative tools
+- **PRO**: $19/month, 113+ functions, full access
 - **ENTERPRISE**: Custom pricing, unlimited usage
 
 ## Support
