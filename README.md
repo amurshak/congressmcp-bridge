@@ -2,7 +2,9 @@
 
 Connect Claude Desktop to US Congressional data - bills, amendments, members, committees, and more.
 
-## Installation
+## Quick Start (5 minutes)
+
+### Installation
 
 ```bash
 npm install -g congressmcp
@@ -52,21 +54,15 @@ Ask Claude about:
 - Roll Call Votes: "How did senators vote on the infrastructure bill?"
 - And much more legislative data!
 
-## Known Limitations
+## Alternative Installation: Self-Hosted
 
-⚠️ **Important Architectural Notice:**
+For advanced users who want full control, CongressMCP is open source:
+- Clone the [CongressMCP repository](https://github.com/amurshak/congressMCP)
+- Requires Python environment + database setup
+- Congress.gov API key needed
+- See CongressMCP/README.md for technical details
 
-Currently, all users share a single Congress.gov API key on the backend server. This means:
-
-- **Rate Limits**: All users share the same 5,000 requests/hour quota from Congress.gov
-- **Scalability**: May hit rate limits with many concurrent users
-- **Architecture**: Not the ideal long-term solution
-
-**Planned Fix (v2.0):** Future versions will require users to provide their own Congress.gov API key for individual rate limits and better scalability. This will require:
-1. Obtaining a free Congress.gov API key at: https://api.congress.gov/sign-up/
-2. Adding `CONGRESS_GOV_API_KEY` to your Claude config
-
-**Current Status:** This limitation doesn't affect functionality for early users, but please be aware that heavy usage may experience rate limiting.
+**Note:** Self-hosting requires significant technical setup and maintenance. The hosted service (above) provides better reliability and support for most users.
 
 ## Subscription Tiers
 
