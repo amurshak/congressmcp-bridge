@@ -66,7 +66,7 @@ For advanced users who want full control, CongressMCP is open source:
 
 ## Subscription Tiers
 
-- **FREE**: All functions with 200 calls/month
+- **FREE**: All functions with 500 calls/month
 - **PRO**: $19/month, all functions with 5,000 calls/month
 - **ENTERPRISE**: Custom pricing, unlimited usage
 
