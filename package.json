@@ -1,7 +1,8 @@
 {
   "name": "congressmcp",
-  "version": "1.2.0",
-  "description": "MCP bridge for Congressional data - access 113+ legislative tools through Claude Desktop and other MCP clients. Free tier includes all tools with rate limiting.",
+  "version": "2.0.0",
+  "description": "DEPRECATED - Use uvx congressmcp instead",
+  "deprecated": "Use uvx congressmcp instead. See https://github.com/amurshak/congressMCP",
   "main": "index.js",
   "bin": {
     "congressmcp": "./index.js"
@@ -11,14 +12,14 @@
     "start": "node index.js"
   },
   "keywords": [
-    "mcp", 
+    "mcp",
     "model-context-protocol",
-    "congress", 
-    "congressional", 
-    "legislative", 
+    "congress",
+    "congressional",
+    "legislative",
     "bills",
     "claude-desktop",
-    "api", 
+    "api",
     "government",
     "politics",
     "research",

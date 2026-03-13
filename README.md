@@ -1,75 +1,18 @@
-# congressmcp
+# congressmcp (DEPRECATED)
 
-Connect Claude Desktop to US Congressional data - bills, amendments, members, committees, and more.
+**This NPM package is no longer maintained.** CongressMCP v2.0.0 runs locally as a Python MCP server — no bridge, no API key, no hosted server needed.
 
-## Quick Start (5 minutes)
+## Migration
 
-### Installation
+1. Uninstall: `npm uninstall -g congressmcp`
+2. Install the new local server: `uvx congressmcp` (requires Python 3.10+ and [uv](https://docs.astral.sh/uv/))
+3. Get a free Congress.gov API key at [api.congress.gov/sign-up](https://api.congress.gov/sign-up/)
+4. See the setup guide: [github.com/amurshak/congressMCP](https://github.com/amurshak/congressMCP)
 
-```bash
-npm install -g congressmcp
-```
+## What Changed
 
-### Setup
+CongressMCP was converted from a hosted SaaS service to a free, open-source, local-first MCP server. The NPM bridge that connected Claude Desktop to the hosted backend is no longer needed — the server now runs locally via stdio.
 
-1. **Get your API key:**
-   - Visit: https://congressmcp.lawgiver.ai
-   - Sign up for a free account  
-   - Check your email for your API key
+## License
 
-2. **Configure local MCP client:**
-
-Add this to your config or cline_mcp_settings.json with your API key:
-
-**macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`  
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`  
-**Linux:** `~/.config/Claude/claude_desktop_config.json`
-
-```json
-{
-  "mcpServers": {
-    "congressmcp": {
-      "command": "npx",
-      "args": [
-        "-y", 
-        "congressmcp"
-      ],
-      "env": {
-        "CONGRESSMCP_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-3. **Restart Claude Desktop** to activate the connection.
-
-## Usage
-
-Ask Claude about:
-- Bills: "Search for recent climate bills"
-- Members: "Who represents California in the Senate?"  
-- Committees: "What committees handle healthcare?"
-- Amendments: "Show amendments to HR 1234"
-- Roll Call Votes: "How did senators vote on the infrastructure bill?"
-- And much more legislative data!
-
-## Alternative Installation: Self-Hosted
-
-For advanced users who want full control, CongressMCP is open source:
-- Clone the [CongressMCP repository](https://github.com/amurshak/congressMCP)
-- Requires Python environment + database setup
-- Congress.gov API key needed
-- See CongressMCP/README.md for technical details
-
-**Note:** Self-hosting requires significant technical setup and maintenance. The hosted service (above) provides better reliability and support for most users.
-
-## Subscription Tiers
-
-- **FREE**: All functions with 500 calls/month
-- **PRO**: $19/month, all functions with 5,000 calls/month
-- **ENTERPRISE**: Custom pricing, unlimited usage
-
-## Support
-
-support@congressmcp.lawgiver.ai
+MIT
